@@ -1,0 +1,200 @@
+2026-10-16 09:55:38,469 INFO [backend.app.services.bambu_mqtt] [b7a9ddd2] [[SERIAL]] Requesting K-profiles for nozzle_diameter=0.4 (attempt 1/3, seq_id=16)
+2026-10-16 09:55:38,524 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] K-profile response: nozzle=0.4, seq_id=16, 0 profiles, matched=True
+2026-10-16 09:55:38,525 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Got 0 K-profiles for nozzle=0.4
+2026-10-16 09:55:38,525 INFO [backend.app.services.bambu_mqtt] [b7a9ddd2] [[SERIAL]] Got 0 K-profiles for nozzle=0.4 on attempt 1
+2026-10-16 09:55:39,802 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:55:40,493 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:55:40,498 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 09:55:41,095 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:55:41,105 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 09:55:41,705 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:55:41,709 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 09:55:48,713 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-10-16 09:56:12,308 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:56:13,017 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:56:13,022 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 09:56:13,639 INFO [backend.app.api.routes.printers] [8a4b620f] [configure_ams_slot] printer_id=1, ams_id=255, tray_id=0
+2026-10-16 09:56:13,639 INFO [backend.app.api.routes.printers] [8a4b620f] [configure_ams_slot] tray_info_idx='GFG98', tray_type='PETG', tray_sub_brands='Generic PETG-CF'
+2026-10-16 09:56:13,639 INFO [backend.app.api.routes.printers] [8a4b620f] [configure_ams_slot] setting_id='', kprofile_filament_id='', kprofile_setting_id=''
+2026-10-16 09:56:13,639 INFO [backend.app.services.bambu_mqtt] [8a4b620f] [[SERIAL]] Publishing ams_filament_setting: AMS 255, tray 0, tray_info_idx=GFG98, setting_id=GFSG98
+2026-10-16 09:56:13,639 INFO [backend.app.services.bambu_mqtt] [8a4b620f] [[SERIAL]] Publishing extrusion_cali_sel: AMS 255, tray 0, cali_idx=-1
+2026-10-16 09:56:13,639 INFO [backend.app.api.routes.printers] [8a4b620f] [configure_ams_slot] Requesting status update from printer
+2026-10-16 09:56:13,640 INFO [backend.app.api.routes.printers] [8a4b620f] [configure_ams_slot] Status update request result: True
+2026-10-16 09:56:13,640 INFO [uvicorn.access] [-] [IP]:54426 - "POST /api/v1/printers/1/slots/255/0/configure?tray_info_idx=GFG98&tray_type=PETG&tray_sub_brands=Generic+PETG-CF&tray_color=000000FF&nozzle_temp_min=220&nozzle_temp_max=260&cali_idx=-1&nozzle_diameter=0.4 HTTP/1.1" 200
+2026-10-16 09:56:13,663 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:56:13,669 INFO [uvicorn.access] [-] [IP]:54426 - "PUT /api/v1/printers/1/slot-presets/255/0?preset_id=builtin_GFG98&preset_name=Generic%20PETG-CF&preset_source=builtin&tray_info_idx=GFG98 HTTP/1.1" 200
+2026-10-16 09:56:13,673 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 09:56:13,676 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Assignment verified: AMS255-T0 now reports GFG98 (kprofile_applied=True)
+2026-10-16 09:56:14,328 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:56:14,336 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 09:56:15,748 INFO [backend.app.main] [-] [Printer 1] Broadcasting AMS change via WebSocket
+2026-10-16 09:56:24,583 INFO [backend.app.api.routes.printers] [a7802901] [configure_ams_slot] printer_id=1, ams_id=255, tray_id=0
+2026-10-16 09:56:24,583 INFO [backend.app.api.routes.printers] [a7802901] [configure_ams_slot] tray_info_idx='GFG98', tray_type='PETG', tray_sub_brands='Generic PETG-CF'
+2026-10-16 09:56:24,583 INFO [backend.app.api.routes.printers] [a7802901] [configure_ams_slot] setting_id='', kprofile_filament_id='', kprofile_setting_id=''
+2026-10-16 09:56:24,583 INFO [backend.app.services.bambu_mqtt] [a7802901] [[SERIAL]] Publishing ams_filament_setting: AMS 255, tray 0, tray_info_idx=GFG98, setting_id=GFSG98
+2026-10-16 09:56:24,583 INFO [backend.app.services.bambu_mqtt] [a7802901] [[SERIAL]] Publishing extrusion_cali_sel: AMS 255, tray 0, cali_idx=-1
+2026-10-16 09:56:24,583 INFO [backend.app.api.routes.printers] [a7802901] [configure_ams_slot] Requesting status update from printer
+2026-10-16 09:56:24,584 INFO [backend.app.api.routes.printers] [a7802901] [configure_ams_slot] Status update request result: True
+2026-10-16 09:56:24,584 INFO [uvicorn.access] [-] [IP]:54464 - "POST /api/v1/printers/1/slots/255/0/configure?tray_info_idx=GFG98&tray_type=PETG&tray_sub_brands=Generic+PETG-CF&tray_color=000000FF&nozzle_temp_min=220&nozzle_temp_max=260&cali_idx=-1&nozzle_diameter=0.4 HTTP/1.1" 200
+2026-10-16 09:56:24,605 INFO [uvicorn.access] [-] [IP]:54464 - "PUT /api/v1/printers/1/slot-presets/255/0?preset_id=builtin_GFG98&preset_name=Generic%20PETG-CF&preset_source=builtin&tray_info_idx=GFG98 HTTP/1.1" 200
+2026-10-16 09:56:24,968 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Assignment verified: AMS255-T0 now reports GFG98 (kprofile_applied=True)
+2026-10-16 09:56:44,917 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:56:45,555 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:56:45,562 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 09:56:46,170 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:56:46,174 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 09:56:46,793 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:56:46,800 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 09:57:17,384 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:57:18,053 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:57:18,059 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 09:57:18,635 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:57:18,639 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 09:57:19,270 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:57:19,278 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 09:57:49,901 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:57:50,565 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:57:50,570 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 09:57:51,199 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:57:51,208 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 09:57:51,787 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:57:51,792 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 09:58:22,451 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:58:23,182 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:58:23,188 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 09:58:23,868 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:58:23,876 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 09:58:24,505 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:58:24,512 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 09:58:55,123 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:58:55,757 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:58:55,765 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 09:58:56,396 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:58:56,408 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 09:58:57,039 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:58:57,044 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 09:59:27,656 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:59:28,319 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:59:28,324 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 09:59:28,925 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:59:28,930 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 09:59:29,546 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 09:59:29,550 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 10:00:00,167 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:00:00,815 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:00:00,820 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 10:00:01,431 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:00:01,437 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 10:00:02,027 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:00:02,032 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 10:00:32,685 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:00:33,394 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:00:33,401 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 10:00:34,015 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:00:34,027 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 10:00:34,628 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:00:34,632 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 10:00:48,722 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-10-16 10:01:05,240 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:01:05,925 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:01:05,931 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /timelapse/video: 550 Failed to change directory.
+2026-10-16 10:01:06,582 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:01:06,590 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /record: 550 Failed to change directory.
+2026-10-16 10:01:07,247 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:01:07,253 INFO [backend.app.services.bambu_ftp] [-] FTP list_files failed for /recording: 550 Failed to change directory.
+2026-10-16 10:01:07,259 WARNING [backend.app.main] [-] [TIMELAPSE] No new video appeared for archive 11 within 900s, giving up
+2026-10-16 10:01:20,760 INFO [uvicorn.access] [-] [IP]:54464 - "POST /api/v1/auth/media-token HTTP/1.1" 200
+2026-10-16 10:01:20,784 INFO [uvicorn.access] [-] [IP]:54464 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-10-16 10:01:51,232 INFO [backend.app.main] [-] [PHOTO-BG] Timelapse for archive 11 didn't land within 900s; falling back to live camera
+2026-10-16 10:01:51,232 INFO [backend.app.main] [-] [PHOTO-UPGRADE] No timelapse frame for archive 11; keeping the live grab
+2026-10-16 10:05:48,731 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-10-16 10:10:48,740 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-10-16 10:15:48,748 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-10-16 10:17:23,725 INFO [backend.app.api.routes.websocket] [-] WebSocket client disconnected normally
+2026-10-16 10:20:48,757 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-10-16 10:25:48,765 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-10-16 10:26:29,956 INFO [uvicorn.access] [-] [IP]:57559 - "POST /api/v1/auth/login HTTP/1.1" 200
+2026-10-16 10:26:30,020 INFO [uvicorn.access] [-] [IP]:57559 - "POST /api/v1/auth/media-token HTTP/1.1" 200
+2026-10-16 10:26:30,057 INFO [uvicorn.access] [-] [IP]:57561 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-10-16 10:26:30,085 INFO [uvicorn.access] [-] [IP]:57563 - "POST /api/v1/auth/ws-token HTTP/1.1" 200
+2026-10-16 10:26:30,113 INFO [backend.app.api.routes.websocket] [-] WebSocket client connecting (principal=[USER])
+2026-10-16 10:26:30,129 INFO [backend.app.api.routes.websocket] [-] WebSocket client connected
+2026-10-16 10:26:30,130 INFO [backend.app.api.routes.websocket] [-] Sent initial status for 1 printers
+2026-10-16 10:26:30,506 INFO [backend.app.api.routes.cloud] [8218da03] get_filament_info called with 3 IDs: ['GFA00', 'GFG02', 'GFG98']
+2026-10-16 10:26:31,208 INFO [uvicorn.access] [-] [IP]:57560 - "POST /api/v1/cloud/filament-info HTTP/1.1" 200
+2026-10-16 10:28:44,560 INFO [uvicorn.access] [-] [IP]:50342 - "POST /api/v1/auth/login HTTP/1.1" 200
+2026-10-16 10:28:44,753 INFO [uvicorn.access] [-] [IP]:50343 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-10-16 10:28:44,769 INFO [uvicorn.access] [-] [IP]:50342 - "POST /api/v1/auth/media-token HTTP/1.1" 200
+2026-10-16 10:28:44,992 INFO [uvicorn.access] [-] [IP]:50343 - "POST /api/v1/auth/ws-token HTTP/1.1" 200
+2026-10-16 10:28:45,029 INFO [backend.app.api.routes.websocket] [-] WebSocket client connecting (principal=[USER])
+2026-10-16 10:28:45,039 INFO [backend.app.api.routes.websocket] [-] WebSocket client connected
+2026-10-16 10:28:45,040 INFO [backend.app.api.routes.websocket] [-] Sent initial status for 1 printers
+2026-10-16 10:28:45,115 INFO [backend.app.api.routes.cloud] [06b8494f] get_filament_info called with 3 IDs: ['GFA00', 'GFG02', 'GFG98']
+2026-10-16 10:28:45,117 INFO [uvicorn.access] [-] [IP]:50346 - "POST /api/v1/cloud/filament-info HTTP/1.1" 200
+2026-10-16 10:28:49,595 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P2S, prot_c=False)
+2026-10-16 10:29:27,143 INFO [backend.app.api.routes.support] [5fa535e4] Log level changed to DEBUG
+2026-10-16 10:29:27,143 INFO [backend.app.api.routes.bug_report] [5fa535e4] Bug report: enabled debug logging
+2026-10-16 10:29:27,143 DEBUG [backend.app.services.bambu_mqtt] [5fa535e4] [[SERIAL]] Requesting status update (pushall)
+2026-10-16 10:29:27,144 INFO [uvicorn.access] [-] [IP]:50358 - "POST /api/v1/bug-report/start-logging HTTP/1.1" 200
+2026-10-16 10:29:27,856 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 8089015, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-16 10:29:27,856 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-16 10:29:27,856 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8089015 (binary: 0b11110110110110110110111)
+2026-10-16 10:29:27,856 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: RC_adapter_3.17_to_3.8mm_7mm
+2026-10-16 10:29:27,856 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '1', 'ams_exist_bits_raw': '1', 'cali_id': 255, 'cali_stat': 0, 'cfs': [2, 5, 7], 'insert_flag': True, 'power_on_flag': False, 'tray_exist_bits': 'b', 'tray_hall_out_bits': '8', 'tray_is_bbl_bits': 'b', 'tray_now': '3', 'tray_pre': '3', 'tray_read_done_bits': 'b', 'tray_reading_bits': '0', 'tray_tar': '3', 'unbind_ams_stat': 0, 'version': 3069}
+2026-10-16 10:29:27,856 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 3
+2026-10-16 10:29:27,856 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-10-16 10:29:27,857 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x10001003 -> extruder 0
+2026-10-16 10:29:27,857 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-16 10:29:27,857 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 0 (main=0, sub=0)
+2026-10-16 10:29:27,857 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-16 10:29:27,857 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] device.extruder.state=1 (switch_state bits 12-14: 0)
+2026-10-16 10:29:27,857 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] info.temp direct: 25°C (heater OFF)
+2026-10-16 10:29:27,857 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ctc_info keys: ['temp']
+2026-10-16 10:29:27,857 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=25.0, heating=False, respect_local=False
+2026-10-16 10:29:27,857 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 25.0, target: 0.0, heating: False
+2026-10-16 10:29:27,858 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-16 10:29:27,858 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'agora_service': 'disable', 'brtc_service': 'enable', 'bs_state': 0, 'cap_pic_enable': 'invalid', 'ipcam_dev': '1', 'ipcam_record': 'enable', 'laser_preview_res': 7, 'liveview_preview': True, 'mode_bits': 2, 'resolution': '1080p', 'rtsp_url': 'rtsps://[IP]:322/streaming/live/1', 'timelapse': 'disable', 'tl_external_free_kb': 438976, 'tl_external_total_kb': 3932608, 'tl_internal_free_kb': 960958, 'tl_internal_total_kb': 962560, 'tl_store_hpd_type': 2, 'tl_store_path_type': 2, 'tutk_server': 'disable'}
+2026-10-16 10:29:27,858 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -66dBm
+2026-10-16 10:29:27,858 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}]
+2026-10-16 10:29:27,858 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [65280]
+2026-10-16 10:29:27,858 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: RC_adapter_3.17_to_3.8mm_7mm
+2026-10-16 10:29:28,896 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 8089015, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-16 10:29:28,896 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-16 10:29:28,896 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8089015 (binary: 0b11110110110110110110111)
+2026-10-16 10:29:28,896 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: RC_adapter_3.17_to_3.8mm_7mm
+2026-10-16 10:29:28,896 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-16 10:29:28,897 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-16 10:29:28,897 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-16 10:29:28,897 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}]
+2026-10-16 10:29:28,897 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [65280]
+2026-10-16 10:29:28,897 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: RC_adapter_3.17_to_3.8mm_7mm
+2026-10-16 10:29:29,925 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 8089015, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-16 10:29:29,926 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-16 10:29:29,926 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8089015 (binary: 0b11110110110110110110111)
+2026-10-16 10:29:29,926 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: RC_adapter_3.17_to_3.8mm_7mm
+2026-10-16 10:29:29,926 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-16 10:29:29,926 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-16 10:29:29,926 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-16 10:29:29,926 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}]
+2026-10-16 10:29:29,927 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [65280]
+2026-10-16 10:29:29,927 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: RC_adapter_3.17_to_3.8mm_7mm
+2026-10-16 10:29:30,960 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 8089015, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-16 10:29:30,960 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-16 10:29:30,961 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8089015 (binary: 0b11110110110110110110111)
+2026-10-16 10:29:30,961 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: RC_adapter_3.17_to_3.8mm_7mm
+2026-10-16 10:29:30,961 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-16 10:29:30,961 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-16 10:29:30,961 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-16 10:29:30,961 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}]
+2026-10-16 10:29:30,961 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [65280]
+2026-10-16 10:29:30,962 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: RC_adapter_3.17_to_3.8mm_7mm
+2026-10-16 10:29:32,012 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 8089015, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-16 10:29:32,013 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-16 10:29:32,013 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8089015 (binary: 0b11110110110110110110111)
+2026-10-16 10:29:32,013 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: RC_adapter_3.17_to_3.8mm_7mm
+2026-10-16 10:29:32,013 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-16 10:29:32,013 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-16 10:29:32,013 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-16 10:29:32,013 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}]
+2026-10-16 10:29:32,014 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [65280]
+2026-10-16 10:29:32,014 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: /data/Metadata/plate_1.gcode, subtask: RC_adapter_3.17_to_3.8mm_7mm
