@@ -1,0 +1,200 @@
+2026-10-21 21:38:46,136 INFO [backend.app.main] [-] [Printer 1] Broadcasting AMS change via WebSocket
+2026-10-21 21:38:46,138 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Requesting K-profiles for nozzle_diameter=0.4 (attempt 1/2, seq_id=3)
+2026-10-21 21:38:46,148 INFO [backend.app.main] [-] [RECONCILE] Printer 1: synthesising missed PRINT COMPLETE for archive 1 (Timemore_Sculptor_078_s_Hopper.gcode.3mf) — printer state FAILED
+2026-10-21 21:38:46,148 INFO [backend.app.main] [-] [CALLBACK] on_print_complete started for printer 1
+2026-10-21 21:38:46,148 INFO [backend.app.main] [-] [TIMING] WebSocket send_print_complete: 0.000s elapsed
+2026-10-21 21:38:46,149 INFO [backend.app.main] [-] Print complete - filename: Timemore_Sculptor_078_s_Hopper.gcode.3mf, subtask: Timemore Sculptor 078/s Hopper, status: aborted
+2026-10-21 21:38:46,149 INFO [backend.app.main] [-] Looking for archive in _active_prints, keys to try: [(1, 'Timemore Sculptor 078/s Hopper.3mf'), (1, 'Timemore Sculptor 078/s Hopper.gcode.3mf'), (1, 'Timemore Sculptor 078/s Hopper'), (1, 'Timemore_Sculptor_078_s_Hopper.gcode.3mf'), (1, 'Timemore_Sculptor_078_s_Hopper.gcode.3mf')]...
+2026-10-21 21:38:46,149 INFO [backend.app.main] [-] Current _active_prints: []
+2026-10-21 21:38:46,162 INFO [backend.app.main] [-] Found archive 1 by subtask_name match: Timemore Sculptor 078/s Hopper
+2026-10-21 21:38:46,223 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] K-profile response: nozzle=0.4, seq_id=3, 0 profiles, matched=True
+2026-10-21 21:38:46,223 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Got 0 K-profiles for nozzle=0.4
+2026-10-21 21:38:46,223 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Got 0 K-profiles for nozzle=0.4 on attempt 1
+2026-10-21 21:38:46,223 INFO [backend.app.main] [-] [Printer 1] Primed K-profile table for nozzle 0.4: 0 profiles
+2026-10-21 21:38:47,398 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=H2S, prot_c=False)
+2026-10-21 21:38:48,801 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=H2S, prot_c=False)
+2026-10-21 21:38:49,556 INFO [uvicorn.access] [-] [IP]:0 - "POST /api/v1/auth/ws-token HTTP/1.1" 200
+2026-10-21 21:38:49,573 INFO [backend.app.api.routes.websocket] [-] WebSocket client connecting (principal=fm)
+2026-10-21 21:38:49,576 INFO [backend.app.api.routes.websocket] [-] WebSocket client connected
+2026-10-21 21:38:49,576 INFO [backend.app.api.routes.websocket] [-] Sent initial status for 1 printers
+2026-10-21 21:38:50,151 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=H2S, prot_c=False)
+2026-10-21 21:38:50,161 INFO [backend.app.main] [-] [TIMING] SD card cleanup: 4.012s elapsed
+2026-10-21 21:38:50,164 INFO [backend.app.main] [-] [TIMING] Queue item update: 4.016s elapsed
+2026-10-21 21:38:50,177 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] on_print_complete: printer=1, archive=1, session=no, ams_mapping=None
+2026-10-21 21:38:50,177 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT COMPLETE printer 1: mapping=[0], tray_now=255, last_loaded_tray=-1
+2026-10-21 21:38:50,188 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] 3MF: archive 1, plate_id=None, filament_usage=[{'slot_id': 1, 'used_g': 86.67, 'type': 'PLA', 'color': '#161616'}]
+2026-10-21 21:38:50,188 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] 3MF: slot_to_tray=[0] (source: queue)
+2026-10-21 21:38:50,188 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] 3MF: slot_id=1 -> global_tray=0 -> AMS0-T0 (used_g=86.7, tray_now_override=None)
+2026-10-21 21:38:50,199 INFO [backend.app.main] [-] [TIMING] Filament usage tracking: 4.051s elapsed
+2026-10-21 21:38:50,199 INFO [backend.app.main] [-] [TIMING] Archive lookup: 4.051s elapsed
+2026-10-21 21:38:50,199 INFO [backend.app.main] [-] [ARCHIVE] Updating archive 1 status...
+2026-10-21 21:38:50,199 INFO [backend.app.main] [-] [ARCHIVE] failure_reason='noStatusUpdate' (status=aborted)
+2026-10-21 21:38:50,213 INFO [backend.app.main] [-] [ARCHIVE] Archive 1 status updated to aborted, failure_reason=noStatusUpdate
+2026-10-21 21:38:50,213 INFO [backend.app.main] [-] [ARCHIVE] WebSocket notification sent for archive 1
+2026-10-21 21:38:50,213 INFO [backend.app.main] [-] [TIMING] Archive status update: 4.065s elapsed
+2026-10-21 21:38:50,222 INFO [backend.app.services.finance_billing] [-] Billing is disabled; skipping print charge for archive ID 1.
+2026-10-21 21:38:50,223 INFO [backend.app.main] [-] [TIMING] Finance charge update: 4.074s elapsed
+2026-10-21 21:38:50,229 INFO [backend.app.main] [-] [PRINT_LOG] Log entry written for archive 1
+2026-10-21 21:38:50,229 INFO [backend.app.main] [-] [TIMING] Print log entry: 4.081s elapsed
+2026-10-21 21:38:50,229 INFO [backend.app.main] [-] [TIMING] Background tasks scheduled (energy, photo): 4.081s elapsed
+2026-10-21 21:38:50,229 INFO [backend.app.main] [-] [TIMING] All background tasks scheduled: 4.081s elapsed
+2026-10-21 21:38:50,229 INFO [backend.app.main] [-] [CALLBACK] on_print_complete finished for printer 1, archive 1
+2026-10-21 21:38:50,230 INFO [backend.app.main] [-] [ENERGY-BG] Starting energy calculation for archive 1
+2026-10-21 21:38:50,230 INFO [backend.app.main] [-] [PHOTO-BG] Starting finish photo capture for archive 1
+2026-10-21 21:38:50,231 INFO [backend.app.main] [-] [AUTO-OFF-BG] Starting smart plug automation for printer 1
+2026-10-21 21:38:50,231 INFO [backend.app.services.smart_plug_manager] [-] Print on printer 1 ended with status 'aborted', skipping auto-off to allow investigation
+2026-10-21 21:38:50,231 INFO [backend.app.main] [-] [AUTO-OFF-BG] Completed
+2026-10-21 21:38:50,231 INFO [backend.app.main] [-] [LAYER-TL] Cancelled layer timelapse for printer 1 (status: aborted)
+2026-10-21 21:38:50,234 INFO [backend.app.main] [-] [ENERGY-BG] No start kWh recorded for archive 1
+2026-10-21 21:38:50,239 INFO [backend.app.services.camera] [-] Found ffmpeg at: /usr/bin/ffmpeg
+2026-10-21 21:38:50,239 INFO [backend.app.services.camera] [-] Capturing camera frame bytes from [IP] using RTSP (model: H2S)
+2026-10-21 21:38:53,460 INFO [backend.app.services.camera] [-] Successfully captured camera frame bytes: 54403 bytes
+2026-10-21 21:38:53,463 INFO [backend.app.services.camera] [-] Saved camera frame to: /app/data/archive/1/20261021_070125_Timemore_Sculptor_078_s_Hopper/photos/finish_20261021_213850_6f790bba.jpg
+2026-10-21 21:38:53,464 INFO [backend.app.services.camera] [-] Finish photo saved: finish_20261021_213850_6f790bba.jpg
+2026-10-21 21:38:53,469 INFO [backend.app.main] [-] [PHOTO-BG] Saved: finish_20261021_213850_6f790bba.jpg
+2026-10-21 21:38:53,469 INFO [backend.app.main] [-] [PHOTO-NOTIFY] Photo task returned: finish_20261021_213850_6f790bba.jpg
+2026-10-21 21:38:53,469 INFO [backend.app.main] [-] [NOTIFY-BG] Starting notifications for printer 1, photo=finish_20261021_213850_6f790bba.jpg
+2026-10-21 21:38:53,479 INFO [backend.app.main] [-] [NOTIFY-BG] Loaded finish photo bytes: 54403 bytes
+2026-10-21 21:38:53,479 INFO [backend.app.services.notification_service] [-] on_print_complete called for printer 1 ([PRINTER]), status=aborted
+2026-10-21 21:38:53,483 INFO [backend.app.services.notification_service] [-] Found 1 providers for on_print_stopped: ['Telegram']
+2026-10-21 21:38:54,124 INFO [backend.app.services.notification_service] [-] Sent notification via Telegram
+2026-10-21 21:38:54,124 INFO [backend.app.main] [-] [NOTIFY-BG] Completed
+2026-10-21 21:38:55,607 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-10-21 21:39:17,026 INFO [backend.app.services.print_scheduler] [-] Queue check: found 1 pending items: [(5, 1, 1, None)]
+2026-10-21 21:39:17,030 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 1}
+2026-10-21 21:39:47,059 INFO [backend.app.services.print_scheduler] [-] Queue check: found 1 pending items: [(5, 1, 1, None)]
+2026-10-21 21:39:47,063 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 1}
+2026-10-21 21:39:47,247 INFO [backend.app.services.announcements] [-] Announcements feed #12: 2 for this install
+2026-10-21 21:40:17,094 INFO [backend.app.services.print_scheduler] [-] Queue check: found 1 pending items: [(5, 1, 1, None)]
+2026-10-21 21:40:17,097 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 1}
+2026-10-21 21:40:47,125 INFO [backend.app.services.print_scheduler] [-] Queue check: found 1 pending items: [(5, 1, 1, None)]
+2026-10-21 21:40:47,128 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 1}
+2026-10-21 21:41:17,151 INFO [backend.app.services.print_scheduler] [-] Queue check: found 1 pending items: [(5, 1, 1, None)]
+2026-10-21 21:41:17,154 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 1}
+2026-10-21 21:41:41,093 INFO [backend.app.api.routes.print_queue] [4267b2a6] Added archive 1 to queue for 1
+2026-10-21 21:41:41,097 INFO [uvicorn.access] [-] [IP]:47974 - "POST /api/v1/queue/ HTTP/1.1" 200
+2026-10-21 21:41:47,178 INFO [backend.app.services.print_scheduler] [-] Queue check: found 2 pending items: [(5, 1, 1, None), (7, 1, 1, None)]
+2026-10-21 21:41:47,181 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 2}
+2026-10-21 21:42:17,204 INFO [backend.app.services.print_scheduler] [-] Queue check: found 2 pending items: [(5, 1, 1, None), (7, 1, 1, None)]
+2026-10-21 21:42:17,207 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 2}
+2026-10-21 21:42:47,230 INFO [backend.app.services.print_scheduler] [-] Queue check: found 2 pending items: [(5, 1, 1, None), (7, 1, 1, None)]
+2026-10-21 21:42:47,233 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 2}
+2026-10-21 21:43:17,256 INFO [backend.app.services.print_scheduler] [-] Queue check: found 2 pending items: [(5, 1, 1, None), (7, 1, 1, None)]
+2026-10-21 21:43:17,260 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 2}
+2026-10-21 21:43:18,883 INFO [backend.app.api.routes.support] [7bd40534] Log level changed to DEBUG
+2026-10-21 21:43:18,883 INFO [backend.app.api.routes.bug_report] [7bd40534] Bug report: enabled debug logging
+2026-10-21 21:43:18,883 DEBUG [backend.app.services.bambu_mqtt] [7bd40534] [[SERIAL]] Requesting status update (pushall)
+2026-10-21 21:43:18,884 INFO [uvicorn.access] [-] [IP]:0 - "POST /api/v1/bug-report/start-logging HTTP/1.1" 200
+2026-10-21 21:43:19,106 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': False, 'cfg': 8088999, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-21 21:43:19,106 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-21 21:43:19,106 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8088999 (binary: 0b11110110110110110100111)
+2026-10-21 21:43:19,106 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FAILED, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:19,106 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '1', 'ams_exist_bits_raw': '1', 'cali_id': 255, 'cali_stat': 0, 'cfs': [2, 3, 4], 'insert_flag': True, 'power_on_flag': False, 'tray_exist_bits': 'f', 'tray_hall_out_bits': '0', 'tray_is_bbl_bits': 'f', 'tray_now': '255', 'tray_pre': '255', 'tray_read_done_bits': 'f', 'tray_reading_bits': '0', 'tray_tar': '255', 'unbind_ams_stat': 0, 'version': 3103}
+2026-10-21 21:43:19,106 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 255
+2026-10-21 21:43:19,106 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-10-21 21:43:19,106 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x10001003 -> extruder 0
+2026-10-21 21:43:19,106 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-21 21:43:19,107 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 0 (main=0, sub=0)
+2026-10-21 21:43:19,107 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-21 21:43:19,107 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] device.extruder.state=1 (switch_state bits 12-14: 0)
+2026-10-21 21:43:19,107 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] info.temp direct: 24°C (heater OFF)
+2026-10-21 21:43:19,107 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ctc_info keys: ['temp']
+2026-10-21 21:43:19,107 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=24.0, heating=False, respect_local=False
+2026-10-21 21:43:19,107 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 24.0, target: 0.0, heating: False
+2026-10-21 21:43:19,107 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-21 21:43:19,108 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] print_error: 50348044 (0x0300400c) -> short_code=0300_400C
+2026-10-21 21:43:19,108 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'agora_service': 'disable', 'brtc_service': 'enable', 'bs_state': 0, 'cap_pic_enable': 'invalid', 'cfg': '0', 'current_liveview': 4, 'ipcam_dev': '1', 'ipcam_record': 'enable', 'laser_preview_res': 4, 'liveview_preview': True, 'mode_bits': 2, 'resolution': '1080p', 'rtsp_url': 'rtsps://[IP]:322/streaming/live/1', 'support_liveview_cams': [4], 'timelapse': 'disable', 'tl_external_free_kb': 40657344, 'tl_external_total_kb': 60074752, 'tl_internal_free_kb': 0, 'tl_internal_total_kb': 0, 'tl_store_hpd_type': 2, 'tl_store_path_type': 2, 'tutk_server': 'disable'}
+2026-10-21 21:43:19,108 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -40dBm
+2026-10-21 21:43:19,108 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'off', 'node': 'chamber_light2'}]
+2026-10-21 21:43:19,108 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [0]
+2026-10-21 21:43:19,108 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FAILED -> FAILED, file: /data/Metadata/plate_1.gcode, subtask: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:20,458 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': False, 'cfg': 8088999, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-21 21:43:20,458 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-21 21:43:20,458 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8088999 (binary: 0b11110110110110110100111)
+2026-10-21 21:43:20,458 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FAILED, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:20,459 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-21 21:43:20,459 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-21 21:43:20,459 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-21 21:43:20,459 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] print_error: 50348044 (0x0300400c) -> short_code=0300_400C
+2026-10-21 21:43:20,459 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'off', 'node': 'chamber_light2'}]
+2026-10-21 21:43:20,459 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [0]
+2026-10-21 21:43:20,460 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FAILED -> FAILED, file: /data/Metadata/plate_1.gcode, subtask: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:21,797 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': False, 'cfg': 8088999, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-21 21:43:21,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-21 21:43:21,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8088999 (binary: 0b11110110110110110100111)
+2026-10-21 21:43:21,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FAILED, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:21,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-21 21:43:21,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-21 21:43:21,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-21 21:43:21,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] print_error: 50348044 (0x0300400c) -> short_code=0300_400C
+2026-10-21 21:43:21,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'off', 'node': 'chamber_light2'}]
+2026-10-21 21:43:21,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [0]
+2026-10-21 21:43:21,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FAILED -> FAILED, file: /data/Metadata/plate_1.gcode, subtask: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:23,078 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': False, 'cfg': 8088999, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-21 21:43:23,078 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-21 21:43:23,079 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8088999 (binary: 0b11110110110110110100111)
+2026-10-21 21:43:23,079 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FAILED, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:23,079 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-21 21:43:23,079 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-21 21:43:23,079 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-21 21:43:23,079 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] print_error: 50348044 (0x0300400c) -> short_code=0300_400C
+2026-10-21 21:43:23,079 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'off', 'node': 'chamber_light2'}]
+2026-10-21 21:43:23,080 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [0]
+2026-10-21 21:43:23,080 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FAILED -> FAILED, file: /data/Metadata/plate_1.gcode, subtask: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:23,605 INFO [backend.app.api.routes.print_queue] [acefe85c] Added archive 1 to queue for 1
+2026-10-21 21:43:23,606 INFO [uvicorn.access] [-] [IP]:50126 - "POST /api/v1/queue/ HTTP/1.1" 200
+2026-10-21 21:43:24,344 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': False, 'cfg': 8088999, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-21 21:43:24,344 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-21 21:43:24,344 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8088999 (binary: 0b11110110110110110100111)
+2026-10-21 21:43:24,345 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FAILED, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:24,345 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-21 21:43:24,345 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-21 21:43:24,345 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-21 21:43:24,345 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] print_error: 50348044 (0x0300400c) -> short_code=0300_400C
+2026-10-21 21:43:24,346 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'off', 'node': 'chamber_light2'}]
+2026-10-21 21:43:24,346 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [0]
+2026-10-21 21:43:24,346 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FAILED -> FAILED, file: /data/Metadata/plate_1.gcode, subtask: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:25,649 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': False, 'cfg': 8088999, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-21 21:43:25,649 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-21 21:43:25,650 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8088999 (binary: 0b11110110110110110100111)
+2026-10-21 21:43:25,650 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FAILED, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:25,650 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-21 21:43:25,650 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-21 21:43:25,650 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-21 21:43:25,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] print_error: 50348044 (0x0300400c) -> short_code=0300_400C
+2026-10-21 21:43:25,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'off', 'node': 'chamber_light2'}]
+2026-10-21 21:43:25,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [0]
+2026-10-21 21:43:25,651 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FAILED -> FAILED, file: /data/Metadata/plate_1.gcode, subtask: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:26,945 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': False, 'cfg': 8088999, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-21 21:43:26,945 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-21 21:43:26,945 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8088999 (binary: 0b11110110110110110100111)
+2026-10-21 21:43:26,945 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FAILED, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:26,945 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-21 21:43:26,945 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-21 21:43:26,946 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-21 21:43:26,946 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] print_error: 50348044 (0x0300400c) -> short_code=0300_400C
+2026-10-21 21:43:26,946 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'off', 'node': 'chamber_light2'}]
+2026-10-21 21:43:26,946 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [0]
+2026-10-21 21:43:26,946 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FAILED -> FAILED, file: /data/Metadata/plate_1.gcode, subtask: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:28,223 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': False, 'cfg': 8088999, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-21 21:43:28,224 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-21 21:43:28,224 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8088999 (binary: 0b11110110110110110100111)
+2026-10-21 21:43:28,224 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FAILED, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:28,224 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-21 21:43:28,224 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-21 21:43:28,224 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-21 21:43:28,225 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] print_error: 50348044 (0x0300400c) -> short_code=0300_400C
+2026-10-21 21:43:28,225 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'off', 'node': 'chamber_light2'}]
+2026-10-21 21:43:28,225 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [0]
+2026-10-21 21:43:28,225 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FAILED -> FAILED, file: /data/Metadata/plate_1.gcode, subtask: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:29,504 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': False, 'cfg': 8088999, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-10-21 21:43:29,504 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-10-21 21:43:29,504 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8088999 (binary: 0b11110110110110110100111)
+2026-10-21 21:43:29,504 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FAILED, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: Timemore_Sculptor_078_s_Hopper
+2026-10-21 21:43:29,504 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-10-21 21:43:29,504 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-10-21 21:43:29,505 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-10-21 21:43:29,505 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] print_error: 50348044 (0x0300400c) -> short_code=0300_400C
+2026-10-21 21:43:29,505 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'off', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}, {'mode': 'off', 'node': 'chamber_light2'}]
+2026-10-21 21:43:29,505 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [0]
+2026-10-21 21:43:29,505 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FAILED -> FAILED, file: /data/Metadata/plate_1.gcode, subtask: Timemore_Sculptor_078_s_Hopper
