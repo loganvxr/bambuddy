@@ -495,7 +495,7 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
             ldap_config = parse_ldap_config(ldap_settings)
             if ldap_config:
                 ldap_user = authenticate_ldap_user(ldap_config, request.username, request.password)
-                if ldap_user and:
+                if ldap_user:
                     # LDAP auth succeeded — find or create local user
                     user = await get_user_by_username(db, ldap_user.username)
                     if user and (user.auth_source != "ldap" or not user.is_active): 
