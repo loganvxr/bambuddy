@@ -464,22 +464,30 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
             detail="Authentication is not enabled",
         )
 
+    # 1. Resolve canonical username UP FRONT so username and email share a
+    #    single 10-attempt bucket and both get checked BEFORE any auth runs.
+    advanced_auth = await is_advanced_auth_enabled(db)
+    target_user = await get_user_by_username(db, request.username)
+    if not target_user and advanced_auth and "@" in request.username:
+        target_user = await get_user_by_email(db, request.username)
+
+    rate_limit_key = target_user.username if target_user else request.username
+
     # Rate-limit repeated login failures — two independent buckets (M-R5-B / M-R6-A):
     #   1. Per-username (10/15 min): prevents password brute-force on a known account.
-    #   2. Per-IP     (20/15 min): prevents an attacker from locking out arbitrary accounts
+    #   2. Per-IP       (20/15 min): prevents an attacker from locking out arbitrary accounts
     #      (DoS) by sending failures for many usernames from a single address.
     from backend.app.api.routes.mfa import MAX_LOGIN_ATTEMPTS, check_rate_limit, record_failed_attempt
 
     await check_rate_limit(db, request.username, event_type=EventType.LOGIN_ATTEMPT, max_attempts=MAX_LOGIN_ATTEMPTS)
+    if rate_limit_key.lower() != request.username.lower():
+        await check_rate_limit(db, rate_limit_key, event_type=EventType.LOGIN_ATTEMPT, max_attempts=MAX_LOGIN_ATTEMPTS)
+
     client_ip = _get_client_ip(raw_request)
     await check_rate_limit(db, client_ip, event_type=EventType.LOGIN_IP, max_attempts=20)
 
     # Initialize `user` up front so every downstream branch can read/write
-    # it without UnboundLocalError. The LDAP success path sets it inside its
-    # own block; the local-credentials and email-credentials paths set it
-    # below. The original code relied on the local-credentials path running
-    # unconditionally to bind `user`; #1589 made that path skippable, so the
-    # init has to live here.
+    # it without UnboundLocalError.
     user = None
     # Check if LDAP is enabled
     ldap_user = None
@@ -498,7 +506,7 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
                 if ldap_user:
                     # LDAP auth succeeded — find or create local user
                     user = await get_user_by_username(db, ldap_user.username)
-                    if user and (user.auth_source != "ldap" or not user.is_active): 
+                    if user and (user.auth_source != "ldap" or not user.is_active):
                         # Username exists as local user OR is deactivated — don't allow login
                         user = None
                         ldap_user = None
@@ -507,10 +515,7 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
                             # User doesn't exist and auto-provision is off
                             ldap_user = None
                         else:
-                            # Auto-provision LDAP user. Provisioning already sets the
-                            # email, groups and finance defaults the sync below would,
-                            # so a new user skips it (it also logged the default-group
-                            # warning a second time, #3197).
+                            # Auto-provision LDAP user.
                             user = await _provision_ldap_user(db, ldap_user, ldap_config)
                             ldap_user_provisioned = True
 
@@ -518,7 +523,6 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
                         # Update email and group mappings on each login
                         await _sync_ldap_user(db, user, ldap_user, ldap_config)
                         # Keep finance defaults idempotently in sync for LDAP users
-                        # (wallet + private cost center + self-membership).
                         await ensure_user_finance_defaults(db, user)
         except Exception as e:  # SEC-AUTH-EXC: LDAP failure sets ldap_user=None, downstream local-auth path runs with its own credential check (no implicit grant)
             import logging
@@ -526,12 +530,7 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
             logging.getLogger(__name__).warning("LDAP authentication error, falling back to local: %s", e)
             ldap_user = None
 
-    # #1589: local username/password gate. LDAP keeps its own switch
-    # (ldap_enabled) and is not affected — a delegated directory has its
-    # own policy and lockouts and is closer to SSO than to local creds.
-    # The env-var BAMBUDDY_LOCAL_LOGIN=true bypasses this gate so a server
-    # admin can recover an install whose SSO provider is unreachable
-    # without editing the DB.
+    # #1589: local username/password gate.
     from backend.app.models.settings import Settings as _Settings_for_local_login
 
     local_login_allowed = ldap_user is not None or _local_login_env_bypass()
@@ -540,8 +539,6 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
             select(_Settings_for_local_login).where(_Settings_for_local_login.key == "local_login_enabled")
         )
         row = setting_row.scalar_one_or_none()
-        # Default True when the row is absent — matches AppSettings default
-        # so fresh installs and tests behave like every release before #1589.
         local_login_allowed = row is None or row.value.lower() == "true"
 
     # Try username-based authentication (skip if already authenticated via LDAP)
@@ -550,18 +547,14 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
 
     # If username auth failed and advanced auth is enabled, try email-based authentication
     if not user and not ldap_user and local_login_allowed:
-        advanced_auth = await is_advanced_auth_enabled(db)
         if advanced_auth:
             user = await authenticate_user_by_email(db, request.username, request.password)
 
     if not user:
-        await record_failed_attempt(db, request.username, event_type=EventType.LOGIN_ATTEMPT)
+        await record_failed_attempt(db, rate_limit_key, event_type=EventType.LOGIN_ATTEMPT)
+        if rate_limit_key.lower() != request.username.lower():
+            await record_failed_attempt(db, request.username, event_type=EventType.LOGIN_ATTEMPT)
         await record_failed_attempt(db, client_ip, event_type=EventType.LOGIN_IP)
-        # Same generic 401 either way — never tell the client whether the
-        # username exists or whether local login was disabled. The Settings
-        # UI and /auth/advanced-auth/status are the channels for that state;
-        # leaking it here would help credential-stuffing distinguish "local
-        # disabled" from "wrong password" across an install fleet.
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
@@ -572,10 +565,14 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
     result = await db.execute(select(User).where(User.id == user.id).options(selectinload(User.groups)))
     user = result.scalar_one()
 
-    # L-R6-A: Password was correct — reset login failure counters for both buckets
+    # L-R6-A: Password was correct — reset login failure counters for all buckets
     from backend.app.api.routes.mfa import clear_failed_attempts
 
     await clear_failed_attempts(db, user.username, event_type=EventType.LOGIN_ATTEMPT)
+    if request.username.lower() != user.username.lower():
+        await clear_failed_attempts(db, request.username, event_type=EventType.LOGIN_ATTEMPT)
+    if user.email and user.email.lower() != request.username.lower():
+        await clear_failed_attempts(db, user.email, event_type=EventType.LOGIN_ATTEMPT)
     await clear_failed_attempts(db, client_ip, event_type=EventType.LOGIN_IP)
 
     # --- 2FA check ---
@@ -606,9 +603,6 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
             key="2fa_challenge",
             value=challenge_id,
             httponly=True,
-            # H-1: only transmit over HTTPS so the binding cookie can't be intercepted
-            # on mixed-content deployments.  Falls back to False on plain HTTP so tests
-            # and local development still work (the client wouldn't send it otherwise).
             secure=raw_request.url.scheme == "https",
             samesite="lax",
             max_age=300,
@@ -619,7 +613,6 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
             methods.append("totp")
         if email_otp_enabled:
             methods.append("email")
-        # Backup codes are always available when TOTP is set up
         if totp_enabled:
             methods.append("backup")
 
@@ -629,8 +622,7 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
             two_fa_methods=methods,
         )
 
-    # No 2FA — issue full token immediately. Session lifetime honours the
-    # admin-configurable ceiling (#1706); resolver clamps to [1h, 720h].
+    # No 2FA — issue full token immediately.
     access_token_expires = timedelta(minutes=await resolve_session_max_minutes(db))
     access_token = create_access_token(data={"sub": user.username}, expires_delta=access_token_expires)
 
@@ -639,7 +631,6 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
         token_type="bearer",
         user=_user_to_response(user),
     )
-
 
 @router.post("/ws-token")
 async def mint_websocket_token(
