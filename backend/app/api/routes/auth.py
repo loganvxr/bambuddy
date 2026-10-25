@@ -495,11 +495,11 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
             ldap_config = parse_ldap_config(ldap_settings)
             if ldap_config:
                 ldap_user = authenticate_ldap_user(ldap_config, request.username, request.password)
-                if ldap_user:
+                if ldap_user and:
                     # LDAP auth succeeded — find or create local user
                     user = await get_user_by_username(db, ldap_user.username)
-                    if user and user.auth_source != "ldap":
-                        # Username exists as local user — don't override
+                    if user and (user.auth_source != "ldap" or not user.is_active): 
+                        # Username exists as local user OR is deactivated — don't allow login
                         user = None
                         ldap_user = None
                     elif not user:
