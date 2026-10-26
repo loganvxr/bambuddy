@@ -1,7 +1,7 @@
+import asyncio
 import logging
 import os
 import secrets
-import asyncio
 from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
@@ -495,8 +495,10 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
 
             ldap_config = parse_ldap_config(ldap_settings)
             if ldap_config:
-                ldap_user = await asyncio.to_thread(authenticate_ldap_user, ldap_config, request.username, request.password)
-                
+                ldap_user = await asyncio.to_thread(
+                    authenticate_ldap_user, ldap_config, request.username, request.password
+                )
+
                 if ldap_user:
                     # LDAP auth succeeded — find or create local user
                     user = await get_user_by_username(db, ldap_user.username)
@@ -841,7 +843,8 @@ async def test_smtp_connection(
             return TestSMTPResponse(success=False, message="SMTP settings not configured. Save SMTP settings first.")
 
         # Send test email
-        await asyncio.to_thread(send_email,
+        await asyncio.to_thread(
+            send_email,
             smtp_settings=smtp_settings,
             to_email=test_request.test_recipient,
             subject="BamBuddy SMTP Test",
