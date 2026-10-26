@@ -1,6 +1,7 @@
 import logging
 import os
 import secrets
+import asyncio
 from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
@@ -494,7 +495,8 @@ async def login(raw_request: Request, request: LoginRequest, response: Response,
 
             ldap_config = parse_ldap_config(ldap_settings)
             if ldap_config:
-                ldap_user = authenticate_ldap_user(ldap_config, request.username, request.password)
+                ldap_user = await asyncio.to_thread(authenticate_ldap_user, ldap_config, request.username, request.password)
+                
                 if ldap_user:
                     # LDAP auth succeeded — find or create local user
                     user = await get_user_by_username(db, ldap_user.username)
@@ -799,7 +801,8 @@ async def logout(
             jti: str | None = verified.get("jti")
             exp = verified.get("exp")
             username: str | None = verified.get("sub")
-            if jti and exp:
+            now = datetime.now(timezone.utc)
+            if exp < now:
                 expires_at = datetime.fromtimestamp(exp, tz=timezone.utc)
                 try:
                     await revoke_jti(jti, expires_at, username)
@@ -838,7 +841,7 @@ async def test_smtp_connection(
             return TestSMTPResponse(success=False, message="SMTP settings not configured. Save SMTP settings first.")
 
         # Send test email
-        send_email(
+        await asyncio.to_thread(send_email,
             smtp_settings=smtp_settings,
             to_email=test_request.test_recipient,
             subject="BamBuddy SMTP Test",
@@ -1035,7 +1038,7 @@ async def _send_reset_email_or_delete_token(
     ERROR so operators are alerted without leaking details to the caller.
     """
     try:
-        send_email(smtp_settings, to_email, subject, text_body, html_body)
+        await asyncio.to_thread(send_email, smtp_settings, to_email, subject, text_body, html_body)
         _logger.info("Password reset email sent (%s) to %s", log_label, to_email)
     except Exception as exc:  # SEC-AUTH-EXC: email-send failure → defensive token cleanup so a stuck token doesn't block re-request; no access granted, just frees future workflow
         _logger.error(
@@ -1510,7 +1513,7 @@ async def test_ldap(
     if not config:
         return {"success": False, "message": "LDAP server URL is not configured"}
 
-    success, message = test_ldap_connection(config)
+    success, message = await asyncio.to_thread(test_ldap_connection, config)
     if success:
         logger.info("LDAP connection test successful")
     else:
@@ -1581,7 +1584,7 @@ async def search_ldap_directory(
         )
 
     try:
-        results = search_ldap_users(config, query, limit=25)
+        results = await asyncio.to_thread(search_ldap_users, config, query, limit=25)
     except Exception as e:  # SEC-AUTH-EXC: raise 503 (fail-closed); route gated upstream by USERS_CREATE permission so detail leak is admin-only
         _logger.exception("LDAP directory search failed")
         # Admin-only endpoint — surface the underlying reason so the operator
@@ -1657,7 +1660,7 @@ async def provision_ldap_user(
     # entries surface as 404 to distinguish "directory unreachable" from
     # "username doesn't exist in the directory" in the UI.
     try:
-        ldap_user = lookup_ldap_user(config, username)
+        ldap_user = await asyncio.to_thread(lookup_ldap_user, config, username)
     except Exception as e:  # SEC-AUTH-EXC: raise 503 (fail-closed); LDAP provision never succeeds on lookup failure
         _logger.exception("LDAP lookup failed during provision")
         raise HTTPException(
